@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--https://mybatis.org/dtd/mybatis-3-mapper.dtd가 다운로드되지 않으면 <a> 태그로 다운해서 로컬로 등록한다.-->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "/Users/haru/schema/mybatis-3-mapper.dtd">
+<!-- 네임스페이스의 충돌을 방지하기 위해 설정한다.-->
+<mapper namespace="su.spring.login">
+
+	<select id="idCheck" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from member
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="login" parameterType="MemberDTO" resultType="MemberDTO" >
+		select * from member
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="idSearch" parameterType="MemberDTO" resultType="MemberDTo">
+		select member_id from member
+		where member_name = #{member_name} and member_birth = #{member_birth} and member_phone = #{member_phone}
+	</select>
+	
+	<select id="passwordSearch" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from member 
+		where member_id = #{member_id} and member_name = #{member_name} and member_birth = TO_DATE(#{member_birth}, 'YYYY-MM-DD') and member_phone = #{member_phone} 
+	</select>
+
+	
+</mapper>
